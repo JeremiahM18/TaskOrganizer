@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 public class TaskViewModel extends ViewModel {
 
-    private MutableLiveData<LinkedList<String>> task;
+    private final MutableLiveData<LinkedList<String>> task;
 
     public TaskViewModel(){
         task = new MutableLiveData<>();
@@ -18,10 +18,12 @@ public class TaskViewModel extends ViewModel {
         return  task;
     }
 
-    public void addTask(String ask){
+    public void addTask(String item){
+        if(item == null) return;
         LinkedList<String> currentList = task.getValue();
-        if(currentList != null && task != null){
-            currentList.add(ask);
+        if(currentList == null) {
+            currentList = new LinkedList<>();
+            currentList.add(item);
             task.setValue(currentList);
         }
     }
