@@ -23,8 +23,8 @@ public class TaskViewModel extends ViewModel {
         LinkedList<String> currentList = task.getValue();
         if(currentList == null) {
             currentList = new LinkedList<>();
-            currentList.add(item);
-            task.setValue(currentList);
         }
+        currentList.addFirst(item);
+        task.setValue(currentList);
     }
 }
